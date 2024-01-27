@@ -24,6 +24,10 @@ while(1):
     cont=input("Do you want to continue(y/n):")
     if cont.lower()=='n':
         break
+    elif cont.lower()=='y':
+        continue
+    else:
+        break
     
     
         
