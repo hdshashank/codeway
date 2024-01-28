@@ -27,8 +27,4 @@ while(1):
     elif cont.lower()=='y':
         continue
     else:
-        break
-    
-    
-        
-        
+        break       
