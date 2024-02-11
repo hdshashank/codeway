@@ -1,47 +1,82 @@
+import csv
+import os
+
 def addtask(n):
     for i in range(n):
-        task=input("Enter the task to be added:")
+        task=['','']
+        t=input("Enter the task to be added:")
+        task[0]=t
+        state="Incomplete"
+        task[1]=state
         todo.append(task)
         print("Task was added successfully.")
 
 def display():
     print("TO-DO LIST:")
-    for i in range(n):
-        print(i+1,".",todo[i])
+    for index, val in enumerate(todo):
+        print(index+1, val[0],val[1])
 
 def editask():
     display()
-    var=int(input("Enter the task to be edited:"))
+    ind=int(input("Enter the task to be edited:"))
     change=input("Enter the change to be made:")
-    todo[var-1]=change
+    todo[ind-1][0]=change
     print("Task was edited successfully.")
 
 def deletetask():
     display()
-    var=int(input("Enter the task to be deleted:"))
-    todo.pop(var)
+    ind=int(input("Enter the S.No of task to be deleted:"))
+    todo.pop(ind-1)
     print("Task was deleted successfully.")
     
-def completetask():
+def updatetask():
     display()
-    var=int(input("Enter the completed task:"))
-    completetodo.append(todo[var])
-    print("Task was marked completed successfully.")
+    ind=int(input("Enter the S.No of task whose status needs to be updated:"))
+    if(todo[ind-1][1]=="Incomplete"):
+        todo[ind-1][1]="Complete"
+    elif(todo[ind-1][1]=="Complete"):
+        todo[ind-1][1]="InComplete"
+    print("Task",ind,"was marked completed successfully.")
+
+def savetodo():
+    with open(docname, 'w', newline="") as file:
+        csvwriter = csv.writer(file)
+        csvwriter.writerows(todo) 
+        file.close()
+
+def cleartodo():
+    with open(docname, 'w') as file:
+        file.truncate()
+        file.close()
 
 todo=[]
-completetodo=[]
+docname="todo.csv"
+rows = []
+if os.stat(docname).st_size==0:
+    print("\nEmpty TO-DO")
+else:
+    with open("todo.csv", 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            todo.append(row)
+        for index, val in enumerate(todo):
+            print(index+1, val[0],val[1])
+
+
 while(1):
-    print("Functions:")
+    print("\nFunctions:")
     print("1.Add Task")
     print("2.Display Tasks")
     print("3.Edit Task")
     print("4.Delete Task")
-    print("5.Complete Task")
-    print("6.Exit")
-    choice=int(input("Choose the function you want to perform:"))
+    print("5.Update Task Status")
+    print("6.Save TO-DO")
+    print("7.Clear TO-DO")
+    print("8.Exit")
+    choice=int(input("\nChoose the function you want to perform:"))
     match choice:
         case 1:
-            n=int(input("Enter no. of tasks to be added:"))
+            n=int(input("\nEnter no. of tasks to be added:"))
             addtask(n)
         case 2:
             display()
@@ -50,8 +85,12 @@ while(1):
         case 4:
             deletetask()
         case 5:
-            completetask()
+            updatetask()
         case 6:
+            savetodo()
+        case 7:
+            cleartodo()
+        case 8:
             exit(0)
         case _:
             print("Invalid Input.")
