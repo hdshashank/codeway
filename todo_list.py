@@ -49,12 +49,14 @@ def savetodo():
         csvwriter = csv.writer(file)
         csvwriter.writerows(todo) 
         file.close()
+    print("\nTO-DO List was saved Successfully.")
 
 # function to clear the TO-DO list in todo.csv file
 def cleartodo():
     with open(docname, 'w') as file:
         file.truncate()
         file.close()
+    print("\nTO-DO List was cleared.")
 
 todo=[]
 # display the saved TO-DO list at the start of the program
