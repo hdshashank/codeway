@@ -6,11 +6,9 @@ def genpass(n):
         password=''
         for i in range(n):
             password+=''.join(random.choice(pass_list))
-        print("\n")
-        print(password)
+        print("\n",password)
     else:
         print("\nPassword should have atleast 6 characters")
-
 
 while True:
     lower=list(string.ascii_lowercase)
