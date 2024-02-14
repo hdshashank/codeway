@@ -6,9 +6,10 @@ def genpass(n):
         password=''
         for i in range(n):
             password+=''.join(random.choice(pass_list))
+        print("\n")
         print(password)
     else:
-        print("Password should have atleast 6 characters")
+        print("\nPassword should have atleast 6 characters")
 
 
 while True:
@@ -17,9 +18,9 @@ while True:
     digits=list(string.digits)
     symbols=list(string.punctuation)
     pass_list=lower+upper+digits+symbols
-    n=int(input("Enter length(>6) of the password:"))
+    n=int(input("\nEnter length(>6) of the password:"))
     genpass(n)
-    cont=input("Do you want to generate one more password(y/n):")
+    cont=input("\nDo you want to generate one more password(y/n):")
     if cont.lower()=='n':
         break
     elif cont.lower()=='y':
