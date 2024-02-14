@@ -22,7 +22,7 @@ def display():
 def editask():
     display()
     ind=int(input("\nEnter the task to be edited:"))
-    change=input("Enter the change to be made:")
+    change=input("\nEnter the change to be made:")
     todo[ind-1][0]=change
     print("Task was edited successfully.")
 
@@ -67,6 +67,7 @@ else:
         csvreader = csv.reader(file)
         for row in csvreader:
             todo.append(row)
+        print("\nTO-DO List:")
         for index, val in enumerate(todo):
             print(index+1, val[0],val[1])
 
