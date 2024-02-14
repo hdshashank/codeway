@@ -1,6 +1,7 @@
 import csv
 import os
 
+# function to add tasks to the TO-DO list
 def addtask(n):
     for i in range(n):
         task=['','']
@@ -11,11 +12,13 @@ def addtask(n):
         todo.append(task)
         print("Task was added successfully.")
 
+# function to display tasks of the TO-DO list
 def display():
     print("TO-DO LIST:")
     for index, val in enumerate(todo):
         print(index+1, val[0],val[1])
 
+# function to edit tasks of the TO-DO list
 def editask():
     display()
     ind=int(input("Enter the task to be edited:"))
@@ -23,12 +26,14 @@ def editask():
     todo[ind-1][0]=change
     print("Task was edited successfully.")
 
+# function to delete tasks of the TO-DO list
 def deletetask():
     display()
     ind=int(input("Enter the S.No of task to be deleted:"))
     todo.pop(ind-1)
     print("Task was deleted successfully.")
     
+# function to update tasks of the TO-DO list
 def updatetask():
     display()
     ind=int(input("Enter the S.No of task whose status needs to be updated:"))
@@ -38,18 +43,21 @@ def updatetask():
         todo[ind-1][1]="InComplete"
     print("Task",ind,"was marked completed successfully.")
 
+# function to save TO-DO list in todo.csv file
 def savetodo():
     with open(docname, 'w', newline="") as file:
         csvwriter = csv.writer(file)
         csvwriter.writerows(todo) 
         file.close()
 
+# function to clear the TO-DO list in todo.csv file
 def cleartodo():
     with open(docname, 'w') as file:
         file.truncate()
         file.close()
 
 todo=[]
+# display the saved TO-DO list at the start of the program
 docname="todo.csv"
 rows = []
 if os.stat(docname).st_size==0:
