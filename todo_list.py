@@ -5,7 +5,7 @@ import os
 def addtask(n):
     for i in range(n):
         task=['','']
-        t=input("Enter the task to be added:")
+        t=input("\nEnter the task to be added:")
         task[0]=t
         state="Incomplete"
         task[1]=state
@@ -14,14 +14,14 @@ def addtask(n):
 
 # function to display tasks of the TO-DO list
 def display():
-    print("TO-DO LIST:")
+    print("\nTO-DO LIST:")
     for index, val in enumerate(todo):
         print(index+1, val[0],val[1])
 
 # function to edit tasks of the TO-DO list
 def editask():
     display()
-    ind=int(input("Enter the task to be edited:"))
+    ind=int(input("\nEnter the task to be edited:"))
     change=input("Enter the change to be made:")
     todo[ind-1][0]=change
     print("Task was edited successfully.")
@@ -29,14 +29,14 @@ def editask():
 # function to delete tasks of the TO-DO list
 def deletetask():
     display()
-    ind=int(input("Enter the S.No of task to be deleted:"))
+    ind=int(input("\nEnter the S.No of task to be deleted:"))
     todo.pop(ind-1)
     print("Task was deleted successfully.")
     
 # function to update tasks of the TO-DO list
 def updatetask():
     display()
-    ind=int(input("Enter the S.No of task whose status needs to be updated:"))
+    ind=int(input("\nEnter the S.No of task whose status needs to be updated:"))
     if(todo[ind-1][1]=="Incomplete"):
         todo[ind-1][1]="Complete"
     elif(todo[ind-1][1]=="Complete"):
