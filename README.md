@@ -9,7 +9,7 @@ This repository comprises projects developed by me throughout the duration of my
 Developed a robust CLI TO-DO List application with Python to manage daily tasks efficiently.
 <br>
 
-📝#### Features Implemented<br>
+#### Features Implemented<br>
 * Add Tasks
 * Display Tasks
 * Edit Tasks
